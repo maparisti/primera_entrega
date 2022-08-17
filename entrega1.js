@@ -4,6 +4,9 @@ let dolar = 1.02
 let euro = 0.98
 let bienvenida = confirm("Estás listo para convertir tu dinero? Da click en aceptar para continuar")
 const conversiones = ['usd a eur', 'eur a usd'];
+const despedida = ['Hola, gracias por usar el Convertor de divisas', 'Buenos días fue un gusto verte el día de hoy', 'Hola, espero que hoy tengas un gran día', 'Buen día y vuelve pronto!'];
+let mensajeRandom = Math.floor(Math.random() * despedida.length);
+let mensajeEscogido = despedida[mensajeRandom]
 
 function nuevaConversion(){
     let nuevaCon = prompt("Ingresa la conversion a sugerir, por favor. ejemplo: cop a chf")
@@ -12,6 +15,13 @@ function nuevaConversion(){
         conversiones.push(nuevaCon)
         console.log("Gracias!", nuevaCon, "ha sido añadida cómo sugerencia")
     }
+}
+
+function despedir() {
+    const cajaDespedida = document.getElementById("cajaDespedida")
+    const h2 = document.createElement("h2")
+          h2.innerText = mensajeEscogido
+          cajaDespedida.append(h2)    
 }
 
 class conversion {
@@ -45,3 +55,4 @@ function horaConversion() {
 }
 
 horaConversion()
+despedir()

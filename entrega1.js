@@ -1,12 +1,12 @@
-/* debugger */
-
 let dolar = 1.02
 let euro = 0.98
-let bienvenida = confirm("Estás listo para convertir tu dinero? Da click en aceptar para continuar")
 const conversiones = ['usd a eur', 'eur a usd'];
 const despedida = ['Hola, gracias por usar el Convertor de divisas', 'Buenos días fue un gusto verte el día de hoy', 'Hola, espero que hoy tengas un gran día', 'Buen día y vuelve pronto!'];
 let mensajeRandom = Math.floor(Math.random() * despedida.length);
 let mensajeEscogido = despedida[mensajeRandom]
+let sugerencia = document.getElementById("sugerencia")
+let verResultado = document.getElementById("verResultado")
+let field = document.querySelectorAll("input")
 
 function nuevaConversion(){
     let nuevaCon = prompt("Ingresa la conversion a sugerir, por favor. ejemplo: cop a chf")
@@ -47,12 +47,31 @@ class conversion {
 }
 
 function horaConversion() {
-    const divisa1 = prompt("Escribe el codigo de la moneda a convertir")
-    const divisa2 = prompt("Escribe el codigo de la moneda de destino")
-    const valorConvertir = parseFloat(prompt("Escribe el valor a convertir"))
+    const divisa1 = document.getElementById("selectDivisa1").value
+    const divisa2 = document.getElementById("selectDivisa2").value
+    const valorConvertir = document.getElementById("valorConvertir").value
     const conversor = new conversion(divisa1, divisa2, valorConvertir)
           conversor.convertir()
+          despedir()
 }
 
-horaConversion()
-despedir()
+sugerencia.addEventListener("click", nuevaConversion)
+verResultado.addEventListener("click", horaConversion)
+
+
+function controlarFocus() {
+    field.forEach(f => {
+        f.addEventListener("focus", ()=> {
+            f.className = "fondo-azul"
+        })
+        f.addEventListener("blur", ()=> {
+            f.className = ""
+        })
+    })
+}
+
+controlarFocus()
+
+
+
+

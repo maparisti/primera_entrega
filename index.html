@@ -5,10 +5,27 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Convertor de divisas</title>
+    <link rel="stylesheet" href="css/style.css">
     <script defer src="entrega1.js"></script>
 </head>
 <body>
-    <h1>Covertor de divisas</h1>
+    <h1>Convertor de divisas</h1>
+    <div>
+        <p>Abre la consola para ver el resultado y selecciona la divisa a convertir. Ten en cuenta que las divisas disponibles son usd y eur</p>
+        <input type="text" id="selectDivisa1" placeholder="Divisa a Convertir">
+        <p>Selecciona la divisa de destino</p>
+        <input type="text" id="selectDivisa2" placeholder="Divisa de Destino">
+        <br>
+        <p>Ingrese el valor a convertir</p>
+        <input type="number" id="valorConvertir">
+        <br>
+        <br>
+        <button id="verResultado">Ver resultado</button>
+    </div> 
+    <div>
+        <p>Buscas otra conversión? dejanos tu sugerencia haciendo click aqui abajo</p>
+        <button id="sugerencia">Sugerir conversión</button>
+    </div>
     <div id="cajaDespedida" ></div>
 </body>
 </html>

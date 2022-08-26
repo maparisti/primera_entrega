@@ -1,7 +1,7 @@
 let dolar = 1.02
 let euro = 0.98
 const conversiones = ['usd a eur', 'eur a usd'];
-const despedida = ['Hola, gracias por usar el Convertor de divisas', 'Buenos días fue un gusto verte el día de hoy', 'Hola, espero que hoy tengas un gran día', 'Buen día y vuelve pronto!'];
+const despedida = ['Gracias por usar el Convertor de divisas', 'Buenos días fue un gusto verte el día de hoy', 'Hola, espero que hoy tengas un gran día', 'Buen día y vuelve pronto!'];
 let mensajeRandom = Math.floor(Math.random() * despedida.length);
 let mensajeEscogido = despedida[mensajeRandom]
 let sugerencia = document.getElementById("sugerencia")
@@ -13,6 +13,7 @@ function nuevaConversion(){
     let resultado = conversiones.includes(nuevaCon)
     if (!resultado) {
         conversiones.push(nuevaCon)
+        localStorage.setItem("conversiones", JSON.stringify(conversiones))
         console.log("Gracias!", nuevaCon, "ha sido añadida cómo sugerencia")
     }
 }

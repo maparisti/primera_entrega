@@ -7,14 +7,17 @@ let mensajeEscogido = despedida[mensajeRandom]
 let sugerencia = document.getElementById("sugerencia")
 let verResultado = document.getElementById("verResultado")
 let field = document.querySelectorAll("input")
+let resultadoC = document.getElementById("resultadoC")
+
+
 
 function nuevaConversion(){
-    let nuevaCon = prompt("Ingresa la conversion a sugerir, por favor. ejemplo: cop a chf")
+    let nuevaCon = document.getElementById("sugerir").value
     let resultado = conversiones.includes(nuevaCon)
     if (!resultado) {
         conversiones.push(nuevaCon)
         localStorage.setItem("conversiones", JSON.stringify(conversiones))
-        console.log("Gracias!", nuevaCon, "ha sido añadida cómo sugerencia")
+        alert("Gracias!" + " " + nuevaCon + " " + "ha sido añadida cómo sugerencia")
     }
 }
 
@@ -34,14 +37,14 @@ class conversion {
     convertir() {
         if ((this.divisa1.toLowerCase() == "usd") && (this.divisa2.toLowerCase() == "eur")) {
                 let resultado = this.valorConvertir * euro
-                console.log(this.valorConvertir, "dolares", "equivalen a", resultado, "euros")
+                      resultadoC.innerText = this.valorConvertir + " " + "dolares" + " " + "equivalen a" + " " + resultado + " " + "euros"
             }
         else if ((this.divisa1.toLowerCase() == "eur") && (this.divisa2.toLowerCase() == "usd")) {
                 let resultado = this.valorConvertir * dolar
-                console.log(this.valorConvertir, "euros", "equivalen a", resultado, "dolares")
+                      resultadoC.innerText = this.valorConvertir + " " + "dolares" + " " + "equivalen a" + " " + resultado + " " + "dolares"
         }    
         else {
-            console.warn("No tenemos disponible esa conversion, pero puedes ingresar tu sugerencia a continuación")
+            alert("No tenemos disponible esa conversion, pero puedes ingresar tu sugerencia a continuación")
             nuevaConversion()
         }
     }

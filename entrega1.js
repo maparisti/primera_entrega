@@ -9,7 +9,13 @@ let verResultado = document.getElementById("verResultado")
 let field = document.querySelectorAll("input")
 let resultadoC = document.getElementById("resultadoC")
 
-
+const Confirm = ()=> {
+    Swal.fire({
+        icon: 'success',
+        title: 'Gracias! la conversión ha sido añadida cómo sugerencia',
+        confirmButtonText: 'Cool'
+      })
+}
 
 function nuevaConversion(){
     let nuevaCon = document.getElementById("sugerir").value
@@ -17,7 +23,7 @@ function nuevaConversion(){
     if (!resultado) {
         conversiones.push(nuevaCon)
         localStorage.setItem("conversiones", JSON.stringify(conversiones))
-        alert("Gracias!" + " " + nuevaCon + " " + "ha sido añadida cómo sugerencia")
+        Confirm()
     }
 }
 

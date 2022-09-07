@@ -8,6 +8,38 @@ let sugerencia = document.getElementById("sugerencia")
 let verResultado = document.getElementById("verResultado")
 let field = document.querySelectorAll("input")
 let resultadoC = document.getElementById("resultadoC")
+const options = {method: 'GET', headers: {Accept: 'application/json'}};
+let displayCurrencies = document.getElementById("displayCurrencies")
+let dg = []
+const URL = "https://api.fastforex.io/fetch-all?api_key=ab3d51f671-7cc2c1023b-rhtwxa"
+
+const peticionFetch = async ()=> {
+    const response = await fetch(URL, options)
+    const data = await response.json()
+          return data
+}
+
+const retornoDivisas = (content)=> {
+    const results = content
+    return `<p class="${results}">${results}</p>`
+}
+
+const retornoDeError = ()=> {
+    return `<p class="errorDeCarga">Parece que no se pudo cargar el contenido</p>`
+}
+
+const cargarDivisas = async ()=> {
+    let contenidoHTML = ""
+        try {
+            dg = await peticionFetch()
+            dg.forEach(content => {
+                contenidoHTML += retornoDivisas(content)
+            })
+            displayCurrencies.innerHTML = contenidoHTML
+        } catch (error) {
+            displayCurrencies.innerHTML = retornoDeError()
+    }
+}
 
 const Confirm = ()=> {
     Swal.fire({
@@ -81,7 +113,4 @@ function controlarFocus() {
 }
 
 controlarFocus()
-
-
-
-
+cargarDivisas()
